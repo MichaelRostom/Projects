@@ -23,10 +23,11 @@ def Cost_Function(X, Y, theta) :
 
 # Gradient Descent
 
+Delta = np.ones((X.shape[1], 1))  #
 for iter in range(itertions) :
-    Delta = np.ones((X.shape[1], 1))
+    op = np.subtract(np.matmul(X, theta), Y)
+    op = op.transpose()
     for j in range(X.shape[1]) :
-        op = np.subtract(np.matmul(X, theta), Y).transpose()  # true
-        Delta[j, 0] = 1/m*np.matmul(op , X[:, j])
-    theta = np.subtract(theta , alpha * Delta)
+        Delta[j, 0] = 1 / m * np.matmul(op, X[:, j].reshape((m, 1)))
+    theta = np.subtract(theta, alpha * Delta)
 print(theta)
