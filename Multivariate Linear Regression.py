@@ -25,13 +25,13 @@ iterations = 800
 
 # run gradient descent
 for iter in range(iterations) :
-    Delta = 1/m*np.matmul(X.transpose(),np.subtract(np.matmul(X, theta), y))
+    Delta = 1 / m * (X.transpose() @ np.subtract(X @ theta, y))
     theta = np.subtract(theta, alpha * Delta)
 print(theta)
 
 # normal equations
 X_data = np.hstack([Ones, X_data])
-theta1 = np.matmul(X_data.transpose(), X_data)
+theta1 = X_data.transpose() @ X_data
 theta1 = np.linalg.inv(theta1)
-theta1 = np.matmul(theta1,np.matmul(X_data.transpose(),y))
+theta1 = theta1 @ np.matmul(X_data.transpose(), y)
 print(theta1)
