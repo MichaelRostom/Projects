@@ -1,4 +1,5 @@
 import numpy as np
+from matplotlib import pyplot as plt
 
 # Load the data
 Data = np.genfromtxt('ex1data2.txt', delimiter=',')
@@ -23,11 +24,27 @@ theta = np.zeros((3, 1))
 alpha = 0.01
 iterations = 800
 
+def Cost_Function(X, Y, theta) :
+    squared_err = (np.subtract(X@ theta, Y)) ** 2  #
+    return 1 / (2 * m) * squared_err.sum()
+
 # run gradient descent
+J_history = [] # For plotting the cost function over iterations
+numbers = [] # For plotting the cost function over iterat
 for iter in range(iterations) :
     Delta = 1 / m * (X.transpose() @ np.subtract(X @ theta, y))
     theta = np.subtract(theta, alpha * Delta)
-print(theta)
+    costfunc = Cost_Function(X, y, theta)
+    print(costfunc, iter)
+    numbers.append(iter)
+    J_history.append(costfunc)
+# Plot the cost function over iterations
+plt.plot(numbers, J_history)
+plt.xlabel('iterations')
+plt.ylabel('Cost')
+plt.title('Cost per iteration')
+plt.tight_layout()
+plt.show()
 
 # normal equations
 X_data = np.hstack([Ones, X_data])

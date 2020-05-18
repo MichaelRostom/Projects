@@ -26,7 +26,7 @@ plt.show()
 
 
 
-# Map the X features
+# Map the X features(not my code)
 def mapFeature(X1, X2, degree=6) :
     if X1.ndim > 0 :
         out = [np.ones(X1.shape[0])]
@@ -71,15 +71,10 @@ def Gradient(theta,X, y):
     g =  gefore + (lambda_/m)*theta
     g[0]=gefore[0]
     return g
-# print(Gradient(theta,X, y))
 
 
 
 # Calculate the best theta using advance optimizatons
-# result = op.fmin_tnc(func = costFunction, x0 = theta, fprime = Gradient, args = (X,y))
-# result[1]
-
-
 Result = opt.minimize(fun = costFunction, 
                                  x0 = theta, 
                                  args = (X, y),
@@ -89,9 +84,7 @@ print(costFunction(Result.x,X,y))
 theta = Result.x
 
 
-
-
-# PLot the decision boundary
+# PLot the decision boundary(not my code)
 def plotDecisionBoundary(plotData, theta, X, y):
     # make sure theta is a numpy array
     theta = np.array(theta)

@@ -44,6 +44,7 @@ y = y.reshape((m, 1))
 lambda_ = 1
 theta = np.zeros((n, 1))
 alpha =0.03
+iterations = 30000
 
 
 # calculate the sigmoid function
@@ -64,7 +65,7 @@ def costFunction(X, y, theta) :
 # run gradient descent
 J_history = [] # For plotting the cost function over iterations
 numbers = [] # For plotting the cost function over iterations
-for i in range(30000) :
+for i in range(iterations) :
     hx = sigmoid(X @ theta)
     theta = theta - alpha * ((1 / m) * (X.transpose() @ (hx - y))+(lambda_/m)*(theta))
     temp = X.transpose() @ (hx - y)
